@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Teste extends Migration
+class Funcionarios extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,14 +14,14 @@ class Teste extends Migration
      */
     public function up()
     {
-            Schema::create('funcionarios', function(Blueprint $table) {
+        Schema::create('funcionarios', function (Blueprint $table) {
+           
             $table->increments('id');
-            $table->string('nome', 100);
-            $table->string('sobrenome', 100);
-            $table->string('cpf',20)->unique();
-            $table->string('email', 100)->unique();
-            $table->string('senha');
-            $table->timestamp('dth_ultimo_acesso')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('nome',50);
+            $table->string('sobrenome',100);
+            $table->integer('cpf')->unique();
+            $table->integer('telefone_fixo')->nullable();
+            $table->integer('telefone_celular')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +33,7 @@ class Teste extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('funcionarios');
     }
+
 }

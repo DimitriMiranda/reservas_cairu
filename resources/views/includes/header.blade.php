@@ -9,6 +9,7 @@ and open the template in the editor.
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}  " />
+     <link rel="stylesheet" href="{{ asset('app.css') }}  " />
     <script src="{{ asset('bootstrap/js/jquery-3.1.0.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
 </head>
