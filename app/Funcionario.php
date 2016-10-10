@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -10,5 +11,12 @@ class Funcionario extends Model
      * @var string */
     
     protected  $table ='funcionarios';
+    protected $fillable = [
+        'id',
+        'nome',
+        'sobrenome',
+        'cpf'
+        
+    ];
     
 }
