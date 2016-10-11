@@ -8,7 +8,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Funcionario;
 
-
 class FuncionarioController extends Controller
 {
 
@@ -27,33 +26,51 @@ class FuncionarioController extends Controller
 
     public function show($_funcioanrioId)
     {
-        // dd($_funcioanrioId);
-        $funcionario = Funcionario::whereId($_funcioanrioId)->first();
 
-        //dd($funcionario);
+        $funcionario = Funcionario::whereId($_funcioanrioId)->first();
         return view('funcionario.edit')->withfuncionario($funcionario);
     }
 
-    public function store(Request $_request)
+    public function store(Request $request)
     {
 
-        $fields = $_request->all();
+        /*
+          $this->validate($request,[
+          'nome' =>'required']
+          ); */
+
+
+        $fields = $request->all();
         $response_ = Funcionario::create($fields);
+
+        return redirect('funcionario');
     }
 
-    public function update($_funcioanrioId, Request $_request)
+    public function update($_funcionarioId, Request $_request)
     {
         try {
 
-            $funcionario = Funcionario::findOrFail($_funcioanrioId);
+            $funcionario = Funcionario::findOrFail($_funcionarioId);
             $input_ = $_request->all();
             $funcionario->fill($input_)->save();
-            Session::flash('flash_message','Dados Atualizados Com Sucesso.');
-            return redirect()->back();
-                  
+            Session::flash('flash_message', 'Dados Atualizados Com Sucesso.');
+            return redirect('funcionario');
         } catch (Exception $exc) {
-            //echo $exc->getTraceAsString();
-            Session::flash('flas_message', 'Erro -> '.$exc->getTraceAsString());
+            Session::flash('flas_message', 'Erro -> ' . $exc->getTraceAsString());
+        }
+    }
+
+    public function destroy($_funcionarioId)
+    {
+        try {
+
+            $funcionario = Funcionario::findOrFail($_funcionarioId);
+            
+            $funcionario->delete();
+            
+            Session::flash('flash_message', 'Dados Atualizados Com Sucesso.');
+        } catch (Exception $exc) {
+            Session::flash('flas_message', 'Erro -> ' . $exc->getTraceAsString());
         }
     }
 

@@ -6,13 +6,7 @@
     <body class="hold-transition skin-red sidebar-mini">
         <div class="wrapper">
 
-
-            <!-- Left side column. contains the logo and sidebar -->
-
-
             <div style="">
-
-
                 <div  class="row">
 
                     <div class="col-md-4" style=" /* border:  1px solid #f00; */">
@@ -28,14 +22,9 @@
 
                         </div>
                     </div>
-
-
                 </div>
-
                 <footer style="font-size: 11px" class="main-footer">
-
                 </footer>
-
                 <div>
                     </body>
                     </html>
